@@ -35,7 +35,8 @@ form.onsubmit = (e) => {
 
 function expensesAdd(newExpense) {
   try {
-    throw new Error("Erro de teste");
+    const expenseItem = document.createElement("li");
+    expenseItem.classList.add("expense");
   } catch (error) {
     alert("Não foi possível adicionar a despesa");
     console.log(error);
