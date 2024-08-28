@@ -1,19 +1,24 @@
-const amount  = document.getElementById("amount")
+const amount = document.getElementById("amount");
+const expense = document.getElementById("expense");
+const category = document.getElementById("category");
+const form = document.querySelector("form");
 
+amount.oninput = () => {
+  let value = amount.value.replace(/\D/g, "");
 
+  value = Number(value) / 100;
 
-amount.oninput = () =>{
-  let value = amount.value.replace(/\D/g, "")
-  
-  value = Number(value) / 100
-  
-  amount.value = formtCurrencyBRL(value) 
-}
+  amount.value = formtCurrencyBRL(value);
+};
 
-function formtCurrencyBRL(value){
+function formtCurrencyBRL(value) {
   value = value.toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL",
-  } )
-  return value
+  });
+  return value;
 }
+
+form.onsubmit = (e) => {
+  e.preventDefault();
+};
