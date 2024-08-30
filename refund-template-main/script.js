@@ -3,7 +3,6 @@ const expense = document.getElementById("expense");
 const category = document.getElementById("category");
 const form = document.querySelector("form");
 const expenseList = document.querySelector("ul");
-
 const expenseQuantity = document.querySelector("aside header p span ");
 const expenseTotal = document.querySelector("aside header h2");
 
@@ -108,3 +107,9 @@ function UppdateTotals() {
     alert("Não foi possível atualizar o total");
   }
 }
+
+expenseList.addEventListener("click", (e) => {
+  if (e.target.classList.contains("remove-icon")) {
+    console.log(e);
+  }
+});
