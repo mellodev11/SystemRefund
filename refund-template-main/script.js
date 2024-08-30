@@ -4,6 +4,8 @@ const category = document.getElementById("category");
 const form = document.querySelector("form");
 const expenseList = document.querySelector("ul");
 
+const expenseQuantity = document.querySelector("aside header p span ");
+
 amount.oninput = () => {
   let value = amount.value.replace(/\D/g, "");
 
@@ -66,8 +68,21 @@ function expenseAdd(newExpense) {
     expenseInfo.append(expenseName, expenseCategory);
     expenseItem.append(expenseIcon, expenseInfo, expenseAmount, removeIcon);
     expenseList.append(expenseItem);
+    UppdateTotals();
   } catch (error) {
     alert("Não foi possível adicionar a despesa");
     console.log(error);
+  }
+}
+function UppdateTotals() {
+  try {
+    const items = expenseList.children;
+
+    expenseQuantity.textContent = `${items.length} ${
+      items.length > 1 ? "despesas" : "despesa"
+    }`;
+  } catch (error) {
+    console.log(error);
+    alert("Não foi possível atualizar o total");
   }
 }
