@@ -81,6 +81,12 @@ function UppdateTotals() {
     expenseQuantity.textContent = `${items.length} ${
       items.length > 1 ? "despesas" : "despesa"
     }`;
+
+    let total = 0;
+
+    for (let i = 0; i < items.length; i++) {
+      const itemAmount = items[i].querySelector(".expense-amount");
+    }
   } catch (error) {
     console.log(error);
     alert("Não foi possível atualizar o total");
