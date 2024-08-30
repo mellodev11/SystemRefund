@@ -88,7 +88,7 @@ function UppdateTotals() {
     for (let i = 0; i < items.length; i++) {
       const itemAmount = items[i].querySelector(".expense-amount");
       let value = itemAmount.textContent
-        .replace(/[^\d]/g, "")
+        .replace(/[^\d,]/g, "")
         .replace(",", ".");
       value = parseFloat(value);
 
@@ -97,7 +97,12 @@ function UppdateTotals() {
       }
       total += Number(value);
     }
-    expenseTotal.textContent = total;
+    const symbolBRL = document.createElement("small");
+    symbolBRL.textContent = "R$";
+    total = formtCurrencyBRL(total).toUpperCase().replace("R$", "");
+
+    expenseTotal.textContent = "";
+    expenseTotal.append(symbolBRL, total);
   } catch (error) {
     console.log(error);
     alert("Não foi possível atualizar o total");
